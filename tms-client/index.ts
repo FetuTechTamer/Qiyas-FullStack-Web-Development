@@ -1,23 +1,13 @@
-import { Temporal } from "@js-temporal/polyfill";
-import type { Student } from "./models/student.model.js";
-import { isStudent } from "./models/student.model.js";
+import { parseStudent } from "./models/student.model.js";
 
-function processStudent(raw: unknown) {
-    if (isStudent(raw)) {
-        const gpaDisplay = raw.gpa?.toFixed(2) ?? "Not yet graded";
+console.log(
+    parseStudent({
+        id: "STU-001",
+        name: "Hana"
+    })
+);
 
-        console.log(
-            `Student ${raw.name} GPA: ${gpaDisplay}`
-        );
-    } else {
-        console.error("Invalid student data received");
-    }
-}
-
-processStudent({
-    id: "STU-001",
-    name: "Hana",
-    gpa: 3.7
+parseStudent({
+    id: 42,
+    name: "Test"
 });
-
-processStudent(42);

@@ -6,4 +6,5 @@ export interface Student {
     gpa?: number;
 }
 export declare function isStudent(value: unknown): value is Student;
+export declare function parseStudent(raw: unknown): Student;
 //# sourceMappingURL=student.model.d.ts.map
