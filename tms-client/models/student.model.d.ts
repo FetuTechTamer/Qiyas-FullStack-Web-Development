@@ -5,4 +5,5 @@ export interface Student {
     enrollmentDate: Temporal.Instant;
     gpa?: number;
 }
+export declare function isStudent(value: unknown): value is Student;
 //# sourceMappingURL=student.model.d.ts.map

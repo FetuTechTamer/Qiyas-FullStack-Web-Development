@@ -1,15 +1,23 @@
 import { Temporal } from "@js-temporal/polyfill";
 import type { Student } from "./models/student.model.js";
+import { isStudent } from "./models/student.model.js";
 
-const student: Student = {
+function processStudent(raw: unknown) {
+    if (isStudent(raw)) {
+        const gpaDisplay = raw.gpa?.toFixed(2) ?? "Not yet graded";
+
+        console.log(
+            `Student ${raw.name} GPA: ${gpaDisplay}`
+        );
+    } else {
+        console.error("Invalid student data received");
+    }
+}
+
+processStudent({
     id: "STU-001",
-    name: "Hana Tadesse",
-    enrollmentDate: Temporal.Now.instant(),
-};
+    name: "Hana",
+    gpa: 3.7
+});
 
-// Try these
-//student.id = "STU-999";
-
-//console.log(student.gpa.toFixed(2));
-
-console.log(student.gpa?.toFixed(2) ?? "Not yet graded");
+processStudent(42);
